@@ -6,7 +6,9 @@ using DevExpress.Persistent.Base;
 using DevExpress.Xpo;
 
 namespace PermissionPolicyExample.Module.BusinessObjects {
-    [DefaultClassOptions, ImageName("BO_Person")]
+	using DevExpress.Persistent.Validation;
+
+	[DefaultClassOptions, ImageName("BO_Person")]
     public class Contact : BaseObject {
         public Contact(Session session) : base(session) { }
         private string name;
@@ -15,9 +17,12 @@ namespace PermissionPolicyExample.Module.BusinessObjects {
             set { SetPropertyValue("Name", ref name, value); }
         }
         private string email;
+		
+
+		[RuleUniqueValue("Email.Unique", DefaultContexts.Save, CriteriaEvaluationBehavior = CriteriaEvaluationBehavior.InTransaction)]
         public string Email {
             get { return email; }
             set { SetPropertyValue("Email", ref email, value); }
         }
-    }
+	}
 }

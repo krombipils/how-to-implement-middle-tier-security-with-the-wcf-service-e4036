@@ -21,7 +21,9 @@ using DevExpress.ExpressApp.MiddleTier;
 
 namespace ConsoleApplicationServer
 {
-    class Program
+	using DevExpress.ExpressApp.Validation;
+
+	class Program
     {
         static Program()
         {
@@ -62,7 +64,8 @@ namespace ConsoleApplicationServer
                 serverApplication.Modules.Add(new SystemAspNetModule());
                 serverApplication.Modules.Add(new PermissionPolicyExampleModule());
                 serverApplication.Modules.Add(new SecurityModule());
-                serverApplication.Modules.EndInit();
+	            serverApplication.Modules.Add(new ValidationModule());
+				serverApplication.Modules.EndInit();
 
                 serverApplication.DatabaseVersionMismatch += new EventHandler<DatabaseVersionMismatchEventArgs>(serverApplication_DatabaseVersionMismatch);
                 serverApplication.CreateCustomObjectSpaceProvider += new EventHandler<CreateCustomObjectSpaceProviderEventArgs>(serverApplication_CreateCustomObjectSpaceProvider);

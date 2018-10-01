@@ -27,7 +27,8 @@ namespace PermissionPolicyExample.Module {
             // PermissionPolicyExampleModule
             // 
             this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.SystemModule.SystemModule));
-        }
+	        this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Validation.ValidationModule));
+		}
 
         #endregion
     }
